@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{6B4D8670-E284-4752-A5B3-667A05B5BA53}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="JediApi_Dynamic.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="JediApi_Static.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="JediApi_SingleUnits.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="JediApi_Dynamic">
+        <MSBuild Projects="JediApi_Dynamic.dproj"/>
+    </Target>
+    <Target Name="JediApi_Dynamic:Clean">
+        <MSBuild Projects="JediApi_Dynamic.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JediApi_Dynamic:Make">
+        <MSBuild Projects="JediApi_Dynamic.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="JediApi_Static">
+        <MSBuild Projects="JediApi_Static.dproj"/>
+    </Target>
+    <Target Name="JediApi_Static:Clean">
+        <MSBuild Projects="JediApi_Static.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JediApi_Static:Make">
+        <MSBuild Projects="JediApi_Static.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="JediApi_SingleUnits">
+        <MSBuild Projects="JediApi_SingleUnits.dproj"/>
+    </Target>
+    <Target Name="JediApi_SingleUnits:Clean">
+        <MSBuild Projects="JediApi_SingleUnits.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="JediApi_SingleUnits:Make">
+        <MSBuild Projects="JediApi_SingleUnits.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="JediApi_Dynamic;JediApi_Static;JediApi_SingleUnits"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="JediApi_Dynamic:Clean;JediApi_Static:Clean;JediApi_SingleUnits:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="JediApi_Dynamic:Make;JediApi_Static:Make;JediApi_SingleUnits:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
